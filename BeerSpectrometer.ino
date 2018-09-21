@@ -23,6 +23,7 @@ String preamble = "     SRM: ";
 String statement;
 
 void setup() {
+  // 430 nm LED on
   lcd.begin();
   pinMode(D0, OUTPUT);
   lcd.backlight();
@@ -41,9 +42,10 @@ void loop() {
     delay(wait);
     sig = analogRead(A0);
     bright = lum(sig);
+    // 430 nm LED off
     lcd.print("  Insert beer,");
     lcd.setCursor(0,1);
-    lcd.print("record baseline");
+    lcd.print("record baseline"); // record background
     stage += 1;
   }
   else if (stage == 1 && button == HIGH) {
@@ -54,6 +56,7 @@ void loop() {
     delay(wait);
     sig = analogRead(A0);
     dark = lum(sig);
+    // 430 nm LED on
     lcd.print("  Insert beer,");
     lcd.setCursor(0,1);
     lcd.print("record absorbance");
